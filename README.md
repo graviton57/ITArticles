@@ -4,7 +4,8 @@
 [![API](https://img.shields.io/badge/API-16%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=16)
 
 
-Simple Android app that showcases UA IT Articles from [DOU.UA](https://jobs.dou.ua/salaries/).
+Simple Android App using [articles DOU API](https://api.dou.ua/articles/) and demonstrates a basic 
+[Model‑View‑Presenter (MVP)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) architecture.
  
 ## Project Structure
 ### Data 
