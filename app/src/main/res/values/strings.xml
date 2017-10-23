@@ -1,0 +1,57 @@
+<resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
+    <string name="app_name">UA IT Articles</string>
+
+    <string name="text_empty_list">No articles.</string>
+
+    <!--Server errors strings-->
+    <string name="error_server">Server error</string>
+    <string name="error_server_not_available">Server not available</string>
+    <string name="error_not_found">Not found. Please try again.</string>
+    <string name="error_default">Error occurred: %s</string>
+    <string name="error_unauthorized">Unauthorized access</string>
+    <string name="error_connection">Please check your internet connection</string>
+    <string name="error_no_data">No data</string>
+
+    <string name="sync_start">Syncing…</string>
+    <string name="sync_complete">Sync complete!</string>
+
+    <string name="format_app_version">Version:<xliff:g id="version">%1s</xliff:g></string>
+    <string name="about">Igor Gavrilyuk 2017</string>
+
+    <!--  Login Validation -->
+    <string name="empty_email">Please provide a non empty email.</string>
+    <string name="invalid_email">Please provide a valid email.</string>
+    <string name="empty_password">Please provide a non empty password.</string>
+
+    <string name="item_filter_all_values" translatable="false">all</string>
+    <string name="item_filter_article_values" translatable="false">articles</string>
+    <string name="item_filter_interview_values" translatable="false">interviews</string>
+    <string name="item_filter_columnist_values" translatable="false">columns</string>
+    <string name="item_filter_news_values" translatable="false">news</string>
+    <string name="item_filter_digest_values" translatable="false">digests</string>
+    <string name="item_filter_event_values" translatable="false">events</string>
+    <string name="item_filter_site_news_values" translatable="false">sitenews</string>
+
+    <string name="menu_item_share">Share</string>
+    <string name="menu_item_logout">Logout</string>
+    <string name="menu_item_sep_addit">Additional</string>
+
+    <string name="menu_item_articles">Articles</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="add_to_favorite">Added to favorites</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+</resources>

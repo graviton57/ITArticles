@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="articles_categories_values">
+        <item>@string/item_filter_all_values</item>
+        <item>@string/item_filter_article_values</item>
+        <item>@string/item_filter_interview_values</item>
+        <item>@string/item_filter_columnist_values</item>
+        <item>@string/item_filter_news_values</item>
+        <item>@string/item_filter_digest_values</item>
+        <item>@string/item_filter_event_values</item>
+        <item>@string/item_filter_site_news_values</item>
+    </string-array>
+
+    <!--Articles tabs array-->
+    <string-array name="articles_tab_titles">
+        <item>@string/salaries_tab_title_articles</item>
+        <item>@string/salaries_tab_title_favorites</item>
+    </string-array>
+
+    <!--Articles tabs caption-->
+    <string name="salaries_tab_title_articles">Articles</string>
+    <string name="salaries_tab_title_favorites">Favorites</string>
+
+
+</resources>

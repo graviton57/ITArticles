@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="@dimen/list_item_padding"
+    android:paddingRight="@dimen/list_item_padding"
+    android:paddingTop="@dimen/list_item_padding_top"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/article_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        fresco:viewAspectRatio="1.5"
+        fresco:actualImageScaleType="fitCenter"
+        fresco:fadeDuration="300"
+        fresco:failureImage="@drawable/ic_error"
+        fresco:placeholderImageScaleType="fitCenter"
+        fresco:progressBarAutoRotateInterval="1000"
+        fresco:progressBarImage="@drawable/ic_loading"
+        fresco:progressBarImageScaleType="centerInside"
+        fresco:retryImage="@drawable/ic_retry"
+        fresco:retryImageScaleType="centerCrop" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/article_title"
+            android:paddingBottom="@dimen/text_item_padding"
+            android:paddingTop="@dimen/text_item_padding"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Вступ до технологій, або IT для початківців"
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_weight="0.95" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/image_star"
+            android:layout_width="@dimen/list_icon"
+            android:layout_height="@dimen/list_icon"
+            android:layout_gravity="center"
+            android:padding="4dp"
+            fresco:placeholderImage="@drawable/ic_heart_gray"
+            fresco:placeholderImageScaleType="fitCenter" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:paddingBottom="@dimen/text_item_padding"
+        android:paddingTop="@dimen/text_item_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/article_author"
+            tools:text="Andrii Protsko"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/article_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/list_item_padding"
+            android:textSize="12sp"
+            tools:text="27 липня 2017, 14:00"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/article_announcement"
+        style="@style/Base.TextAppearance.AppCompat.Medium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="У статті ви знайдете детальний опис найпоширеніших позицій в IT-компаніях та перелік того, що потрібно вміти і знати початківцю, щоб потрапити на них." />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/views_icon"
+            android:layout_width="@dimen/small_icon_size"
+            android:layout_height="@dimen/small_icon_size"
+            android:padding="@dimen/text_item_padding"
+            fresco:placeholderImage="@drawable/ic_eye"
+            fresco:placeholderImageScaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/article_views"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/text_item_padding"
+            tools:text="26123"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/views_icon"
+            android:layout_toEndOf="@+id/views_icon" />
+
+        <TextView
+            android:id="@+id/article_comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/comment_text_outline"
+            android:drawablePadding="@dimen/text_item_padding"
+            tools:text="123"
+            android:layout_alignBaseline="@+id/article_views"
+            android:layout_alignBottom="@+id/article_views"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:paddingBottom="@dimen/text_item_padding"
+        android:paddingTop="@dimen/text_item_padding"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/article_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:textStyle="bold|italic"
+            tools:text="Статьи" />
+
+        <TextView
+            android:id="@+id/article_tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/list_item_padding_top"
+            tools:text="junior, джуниор, карьера, первая работа" />
+
+    </LinearLayout>
+
+</LinearLayout>

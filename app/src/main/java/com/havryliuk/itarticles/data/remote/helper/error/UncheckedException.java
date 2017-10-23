@@ -1,0 +1,12 @@
+package com.havryliuk.itarticles.data.remote.helper.error;
+
+/**
+ * Created by Igor Havrylyuk on 20.10.2017.
+ */
+public class UncheckedException extends Throwable {
+
+    public UncheckedException(String detailMessage) {
+        super(detailMessage);
+    }
+
+}

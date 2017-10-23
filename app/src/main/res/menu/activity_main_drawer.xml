@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/setting_separator"
+            android:title="@string/menu_item_sep_addit">
+            <menu>
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_share_variant"
+                    android:title="@string/menu_item_share" />
+
+            </menu>
+        </item>
+
+        <item
+            android:id="@+id/logout_separator"
+            android:title="@string/menu_item_logout">
+            <menu>
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_logout"
+                    android:title="@string/menu_item_logout" />
+            </menu>
+        </item>
+
+
+    </group>
+
+
+</menu>
