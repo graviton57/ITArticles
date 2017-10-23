@@ -24,12 +24,16 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_API_URL", "\"$BASE_API_URL\""
 
+        jackOptions {
+            enabled true
+        }
+
     }
 
     signingConfigs {
         release {
             try {
-                storeFile file("/keystore/itarticles.jks")
+                storeFile file("/keystore/it_articles.jks")
                 storePassword KEYSTORE_PASSWORD
                 keyAlias "default"
                 keyPassword KEY_PASSWORD
@@ -53,8 +57,8 @@ android {
     buildTypes {
         release {
             debuggable false
-            minifyEnabled true
-            useProguard true
+            minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
         }
@@ -78,6 +82,10 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
