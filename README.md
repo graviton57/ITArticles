@@ -1,7 +1,10 @@
 # UA IT Articles
 
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![API](https://img.shields.io/badge/API-16%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=16)
 
-Simple Android app that showcases UA IT Articles.
+
+Simple Android app that showcases UA IT Articles from [DOU.UA](https://jobs.dou.ua/salaries/).
  
 ## Project Structure
 ### Data 
@@ -9,7 +12,7 @@ It contains all the data(Shared Preferences, Local DB and Remote API) accessing 
 ### Injection
 Dependency providing classes using Dagger2.
 ### Events
-EventBus events classes that simplifies communication between Activities and Fragments/
+EventBus events classes that simplifies communication between Activities and Fragments.
 ### UI
 View classes along with their corresponding Presenters.
 ### Utils
