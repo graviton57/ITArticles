@@ -21,9 +21,9 @@ Utility classes.
 
 ## Preview
 
-Login|Articles List 
--------------|-----------------
-![alt text](art/login.png "Login")  |![alt text](art/articles.png "Articles")   
+Login|Articles List|Search param 
+-------------|-----------------|-----------------
+![alt text](art/login.png "Login")  |![alt text](art/articles.png "Articles")  |![alt text](art/search.png "Search")   
 
 
 ## Library reference resources

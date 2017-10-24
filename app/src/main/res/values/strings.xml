@@ -76,7 +76,7 @@
     <string name="radio_author">Author</string>
     <string name="pick_date">Pick date</string>
     <string name="search_by_date">Search by date:</string>
-    <string name="format_date_to">To:<xliff:g id="date_to">%s</xliff:g></string>
-    <string name="format_date_from">From:<xliff:g id="date_from">%s</xliff:g></string>
+    <string name="format_date_to">To: <xliff:g id="date_to">%s</xliff:g></string>
+    <string name="format_date_from">From: <xliff:g id="date_from">%s</xliff:g></string>
 
 </resources>

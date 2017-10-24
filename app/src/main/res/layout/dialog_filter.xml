@@ -72,7 +72,7 @@
                 android:layout_marginTop="@dimen/dialog_margin_top" />
 
             <TextView
-                style="@style/Base.TextAppearance.AppCompat.Title"
+                style="@style/Base.TextAppearance.AppCompat.Subhead"
                 android:id="@+id/date_from_title"
                 android:text="@string/format_date_from"
                 android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
                 android:layout_marginTop="@dimen/dialog_margin_top" />
 
             <TextView
-                style="@style/Base.TextAppearance.AppCompat.Title"
+                style="@style/Base.TextAppearance.AppCompat.Subhead"
                 android:id="@+id/date_to_title"
                 android:text="@string/format_date_to"
                 android:layout_width="wrap_content"
