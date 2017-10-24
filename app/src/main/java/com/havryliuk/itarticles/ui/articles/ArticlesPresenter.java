@@ -99,11 +99,10 @@ public class ArticlesPresenter<V extends ArticlesMvpView> extends BasePresenter<
         @Override
         public void onNext(ArticleResponse articleResponse) {
             super.onNext(articleResponse);
-            if (articleResponse.getArticles().isEmpty() &
-                    articleResponse.getNext() != null) {//if last data page not call showEmptyView()
+            if (articleResponse.getArticles().isEmpty() ){
                 getMvpView().showEmptyView();
             } else {
-                   getMvpView().showArticles(articleResponse.getArticles());
+                getMvpView().showArticles(articleResponse.getArticles());
              }
         }
     }
