@@ -16,7 +16,7 @@
     <string name="sync_complete">Sync complete!</string>
 
     <string name="format_app_version">Version:<xliff:g id="version">%1s</xliff:g></string>
-    <string name="about">Igor Gavrilyuk 2017</string>
+    <string name="about">Ihor Havryliuk 2017</string>
 
     <!--  Login Validation -->
     <string name="empty_email">Please provide a non empty email.</string>
@@ -75,7 +75,8 @@
     <string name="radio_tag">Tag</string>
     <string name="radio_author">Author</string>
     <string name="pick_date">Pick date</string>
-    <string name="format_date_to">Date to:<xliff:g id="date_to">%s</xliff:g></string>
-    <string name="format_date_from">Date from:<xliff:g id="date_from">%s</xliff:g></string>
+    <string name="search_by_date">Search by date:</string>
+    <string name="format_date_to">To:<xliff:g id="date_to">%s</xliff:g></string>
+    <string name="format_date_from">From:<xliff:g id="date_from">%s</xliff:g></string>
 
 </resources>

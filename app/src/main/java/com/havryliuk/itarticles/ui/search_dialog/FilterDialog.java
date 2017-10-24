@@ -21,6 +21,7 @@ import com.havryliuk.itarticles.ui.base.BaseDialog;
 import com.havryliuk.itarticles.utils.events.SearchParamEvent;
 
 import org.greenrobot.eventbus.EventBus;
+import org.joda.time.DateTime;
 
 import java.util.Calendar;
 
@@ -38,7 +39,8 @@ public class FilterDialog extends BaseDialog
 
 
     private static final String SEARCH_DIALOG_TAG = "SEARCH_DIALOG_TAG";
-    private static final String DATE_PICKER_DIALOG_RAG = "Datepickerdialog";
+    private static final String DATE_PICKER_DIALOG_RAG = "DATE_PICKER_DIALOG";
+    private static final String DATE_PATTERN = "yyyy-MM-dd";
 
     @Inject
     FilterDialogMvpPresenter<FilterDialogMvpView> presenter;
@@ -65,8 +67,8 @@ public class FilterDialog extends BaseDialog
     TextView dateFromView;
 
     private String category;
-    private String dateTo = "";
-    private String dateFrom = "";
+    private String dateTo;
+    private String dateFrom;
 
     public static FilterDialog newInstance() {
         Bundle args = new Bundle();
@@ -78,7 +80,8 @@ public class FilterDialog extends BaseDialog
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        category = null;
+        dateTo = "";
+        dateFrom = "";
         return super.onCreateDialog(savedInstanceState);
     }
 
@@ -134,21 +137,23 @@ public class FilterDialog extends BaseDialog
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-        pickDateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                DatePickerDialog dpd = DatePickerDialog.newInstance(
-                        FilterDialog.this,
-                        now.get(Calendar.YEAR),
-                        now.get(Calendar.MONTH),
-                        now.get(Calendar.DAY_OF_MONTH)
-                );
-                dpd.show(getActivity().getFragmentManager(), DATE_PICKER_DIALOG_RAG);
-            }
-        });
+        pickDateButton.setOnClickListener(pickDateListener);
         updateDate();
     }
+
+    private View.OnClickListener pickDateListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Calendar now = Calendar.getInstance();
+            DatePickerDialog dpd = DatePickerDialog.newInstance(
+                    FilterDialog.this,
+                    now.get(Calendar.YEAR),
+                    now.get(Calendar.MONTH),
+                    now.get(Calendar.DAY_OF_MONTH)
+            );
+            dpd.show(getActivity().getFragmentManager(), DATE_PICKER_DIALOG_RAG);
+        }
+    };
 
     @Override
     public void onFilterValueChange(SearchParamEvent event) {
@@ -169,10 +174,10 @@ public class FilterDialog extends BaseDialog
     @Override
     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth,
                           int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
-        dateFrom = String.valueOf(year) + "-" + String.valueOf(monthOfYear)
-                + "-" + String.valueOf(dayOfMonth);
-        dateTo = String.valueOf(yearEnd) + "-" + String.valueOf(monthOfYearEnd)
-                + "-" + String.valueOf(dayOfMonthEnd);
+        DateTime dateTimeFrom = new DateTime(year, monthOfYear, dayOfMonth, 0, 0);
+        DateTime dateTimeTo = new DateTime(yearEnd, monthOfYearEnd, dayOfMonthEnd, 0, 0);
+        dateFrom = dateTimeFrom.toString(DATE_PATTERN);
+        dateTo = dateTimeTo.toString(DATE_PATTERN);
         updateDate();
     }
 

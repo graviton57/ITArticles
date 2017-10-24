@@ -64,6 +64,14 @@
 
             <TextView
                 style="@style/Base.TextAppearance.AppCompat.Title"
+                android:id="@+id/date_title"
+                android:text="@string/search_by_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dialog_margin_top" />
+
+            <TextView
+                style="@style/Base.TextAppearance.AppCompat.Title"
                 android:id="@+id/date_from_title"
                 android:text="@string/format_date_from"
                 android:layout_width="wrap_content"
