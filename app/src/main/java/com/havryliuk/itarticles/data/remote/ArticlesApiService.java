@@ -9,6 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.QueryMap;
 
 /**
+ * Dou articles api
  * Created by Igor Havrylyuk on 21.10.2017.
  */
 

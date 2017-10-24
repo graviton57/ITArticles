@@ -54,14 +54,12 @@ public class ArticlesAdapter extends BaseRecyclerViewAdapter<ArticlesAdapter.Vie
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        DouArticle douArticle = getItem(position);
-        final int articleId = douArticle.getId();
-        final String articleUrl = douArticle.getUrl();
+        final DouArticle douArticle = getItem(position);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listener != null) {
-                    listener.onArticleClick(articleUrl);
+                    listener.onArticleClick(douArticle.getUrl());
                 }
             }
         });
@@ -87,16 +85,13 @@ public class ArticlesAdapter extends BaseRecyclerViewAdapter<ArticlesAdapter.Vie
             @Override
             public void onClick(View v) {
                 if (listener != null) {
-                    listener.onFavoriteClick(articleId, isFavorite);
+                    listener.onFavoriteClick(douArticle.getId(), isFavorite);
                 }
             }
         });
+        holder.imageView.setImageURI(
+             Uri.parse(articleImage.isEmpty() ? douArticle.getImgSmall() : douArticle.getImgBig()));
 
-        if (articleImage.isEmpty()){
-            holder.imageView.setImageURI(Uri.parse(douArticle.getImgSmall()));
-        } else {
-            holder.imageView.setImageURI(Uri.parse(douArticle.getImgBig()));
-        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

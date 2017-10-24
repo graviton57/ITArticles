@@ -89,24 +89,20 @@ public abstract class BaseActivity  extends AppCompatActivity
 
     @Override
     public void showLoading() {
-
     }
 
     @Override
     public void hideLoading() {
-
     }
 
     protected abstract void initUI();
 
     @Override
     public void onFragmentAttached() {
-
     }
 
     @Override
     public void onFragmentDetached(String tag) {
-
     }
 
   }

@@ -43,7 +43,8 @@ public class TestModels {
         article.setUrl("https://dou.ua/lenta/digests/php-digest-9/");
         article.setCategory("Ссылки");
         article.setCategoryUrl("https://dou.ua/lenta/digests/");
-        article.setAnnouncement("У випуску: що нового в PHP 7.2, вразливість Joomla! 3.7.5, Hacktoberfest - долучайтеся до PHP-проектів на GitHub.");
+        article.setAnnouncement("У випуску: що нового в PHP 7.2, вразливість Joomla! 3.7.5, " +
+                "Hacktoberfest - долучайтеся до PHP-проектів на GitHub.");
         article.setTags("PHP, PHP дайджест");
         article.setPageviews(698);
         article.setCommentsCount("1");
@@ -62,7 +63,8 @@ public class TestModels {
         article.setUrl("https://dou.ua/lenta/digests/php-digest-9/");
         article.setCategory("Ссылки");
         article.setCategoryUrl("https://dou.ua/lenta/digests/");
-        article.setAnnouncement("У випуску: що нового в PHP 7.2, вразливість Joomla! 3.7.5, Hacktoberfest - долучайтеся до PHP-проектів на GitHub.");
+        article.setAnnouncement("У випуску: що нового в PHP 7.2, вразливість Joomla! 3.7.5" +
+                ", Hacktoberfest - долучайтеся до PHP-проектів на GitHub.");
         article.setTags("PHP, PHP дайджест");
         article.setPageviews(98);
         article.setCommentsCount("152");
@@ -81,7 +83,8 @@ public class TestModels {
         article.setUrl("https://dou.ua/lenta/digests/php-digest-9/");
         article.setCategory("Ссылки");
         article.setCategoryUrl("https://dou.ua/lenta/digests/");
-        article.setAnnouncement("У випуску: що нового в PHP 7.2, вразливість Joomla! 3.7.5, Hacktoberfest - долучайтеся до PHP-проектів на GitHub.");
+        article.setAnnouncement("У випуску: що нового в PHP 7.2, вразливість Joomla! 3.7.5," +
+                " Hacktoberfest - долучайтеся до PHP-проектів на GitHub.");
         article.setTags("PHP, PHP дайджест");
         article.setPageviews(4698);
         article.setCommentsCount("0");

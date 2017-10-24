@@ -20,7 +20,6 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         super(compositeDisposableHelper, dataManager);
     }
 
-
     @Override
     public void onDrawerAboutClick() {
         getMvpView().closeNavigationDrawer();

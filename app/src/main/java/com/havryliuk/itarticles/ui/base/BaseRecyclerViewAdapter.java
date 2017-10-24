@@ -17,11 +17,7 @@ public abstract class BaseRecyclerViewAdapter<VH extends RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
-        if (data == null) {
-            return 0;
-        } else {
-            return data.size();
-        }
+        return data == null ? 0 : data.size();
     }
 
     @Override

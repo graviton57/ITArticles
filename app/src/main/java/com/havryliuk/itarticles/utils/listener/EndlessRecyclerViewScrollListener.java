@@ -23,7 +23,7 @@ public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnS
     // Sets the starting page index
     private int startingPageIndex = 1;
 
-    RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     public EndlessRecyclerViewScrollListener(LinearLayoutManager layoutManager) {
         this.mLayoutManager = layoutManager;
@@ -61,7 +61,8 @@ public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnS
         int totalItemCount = mLayoutManager.getItemCount();
 
         if (mLayoutManager instanceof StaggeredGridLayoutManager) {
-            int[] lastVisibleItemPositions = ((StaggeredGridLayoutManager) mLayoutManager).findLastVisibleItemPositions(null);
+            int[] lastVisibleItemPositions =
+                    ((StaggeredGridLayoutManager) mLayoutManager).findLastVisibleItemPositions(null);
             // get maximum element within the list
             lastVisibleItemPosition = getLastVisibleItem(lastVisibleItemPositions);
         } else if (mLayoutManager instanceof GridLayoutManager) {
@@ -69,7 +70,6 @@ public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnS
         } else if (mLayoutManager instanceof LinearLayoutManager) {
             lastVisibleItemPosition = ((LinearLayoutManager) mLayoutManager).findLastVisibleItemPosition();
         } 
-
         // If the total item count is zero and the previous isn't, assume the
         // list is invalidated and should be reset back to initial state
         if (totalItemCount < previousTotalItemCount) {
@@ -86,14 +86,14 @@ public abstract class EndlessRecyclerViewScrollListener extends RecyclerView.OnS
             loading = false;
             previousTotalItemCount = totalItemCount;
         }
-
         // If it isn’t currently ic_loading, we check to see if we have breached
         // the visibleThreshold and need to reload more data.
         // If we do need to reload some more data, we execute onLoadMore to fetch the data.
         // threshold should reflect how many total columns there are too
         if (!loading && (lastVisibleItemPosition + visibleThreshold) > totalItemCount) {
             currentPage++;
-            Timber.d("onLoadMode with page: %s, and offset: %s", currentPage, view.getAdapter().getItemCount());
+            Timber.d("onLoadMode with page: %s, and offset: %s",
+                    currentPage, view.getAdapter().getItemCount());
             onLoadMore(currentPage, totalItemCount, view);
             loading = true;
         }

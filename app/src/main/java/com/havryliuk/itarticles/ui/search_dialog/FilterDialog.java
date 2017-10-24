@@ -1,8 +1,6 @@
 package com.havryliuk.itarticles.ui.search_dialog;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,14 +73,6 @@ public class FilterDialog extends BaseDialog
         FilterDialog fragment = new FilterDialog();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        dateTo = "";
-        dateFrom = "";
-        return super.onCreateDialog(savedInstanceState);
     }
 
     @Override
@@ -182,7 +172,7 @@ public class FilterDialog extends BaseDialog
     }
 
     private void updateDate(){
-        dateFromView.setText(getString(R.string.format_date_from, dateFrom));
-        dateToView.setText(getString(R.string.format_date_to, dateTo));
+        dateFromView.setText(getString(R.string.format_date_from, dateFrom == null ? "" : dateFrom));
+        dateToView.setText(getString(R.string.format_date_to, dateTo == null ? "" : dateTo));
     }
 }
