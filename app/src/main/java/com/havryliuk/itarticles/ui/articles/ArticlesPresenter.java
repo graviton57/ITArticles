@@ -52,10 +52,10 @@ public class ArticlesPresenter<V extends ArticlesMvpView> extends BasePresenter<
     }
 
     @Override
-    public void loadArticles(String category, int page) {
+    public void loadArticles(String searchTag, String category, int page) {
         if (getMvpView().isNetworkConnected()) {
             getCompositeDisposableHelper().addDisposable(getDataManager()
-                    .getArticles(buildOptions(category, page))
+                    .getArticles(buildOptions(searchTag, category, page))
                     .flatMap(new Function<ArticleResponse, Observable<ArticleResponse>>() {
                         @Override
                         public Observable<ArticleResponse> apply(
@@ -108,13 +108,16 @@ public class ArticlesPresenter<V extends ArticlesMvpView> extends BasePresenter<
         }
     }
 
-    private HashMap<String, String> buildOptions(String category, int page) {
+    private HashMap<String, String> buildOptions(String searchTag, String category, int page) {
         HashMap<String, String> options = new HashMap<>();
         options.put(ArticlesApiHelper.OFFSET,
                 String.valueOf((page - 1) * ArticlesApiHelper.LIMIT_DEFAULT));
         options.put(ArticlesApiHelper.LIMIT, String.valueOf(ArticlesApiHelper.LIMIT_DEFAULT));
         if (category != null) {
             options.put(ArticlesApiHelper.CATEGORY, category);
+        }
+        if (searchTag != null) {
+            options.put(ArticlesApiHelper.TAG, searchTag);
         }
         return options;
     }

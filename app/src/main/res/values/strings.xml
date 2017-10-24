@@ -54,4 +54,5 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="menu_item_search">Shearch</string>
 </resources>

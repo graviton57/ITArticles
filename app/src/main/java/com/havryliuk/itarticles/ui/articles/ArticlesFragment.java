@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import android.widget.Toast;
 
 import com.havryliuk.itarticles.R;
 import com.havryliuk.itarticles.data.remote.model.DouArticle;
-import com.havryliuk.itarticles.ui.base.BaseFragment;
+import com.havryliuk.itarticles.ui.base.BaseFragmentSearchable;
 import com.havryliuk.itarticles.utils.AppUtils;
 import com.havryliuk.itarticles.utils.events.RefreshArticles;
 import com.havryliuk.itarticles.utils.listener.EndlessRecyclerViewScrollListener;
@@ -32,11 +33,11 @@ import butterknife.ButterKnife;
 
 /**
  * Articles Fragment
- * Created by Igor Havrylyuk on 30.08.2017.
+ * Created by Igor Havrylyuk on 24.10.2017.
  */
 
 @SuppressWarnings("deprecation")
-public class ArticlesFragment extends BaseFragment implements ArticlesMvpView,
+public class ArticlesFragment extends BaseFragmentSearchable implements ArticlesMvpView,
         SwipeRefreshLayout.OnRefreshListener {
 
     public static final String EXTRA_CATEGORY_KEY = "EXTRA_CATEGORY_KEY";
@@ -85,10 +86,10 @@ public class ArticlesFragment extends BaseFragment implements ArticlesMvpView,
         return view;
     }
 
-    private void loadData(int index, int page){
+    private void loadData(String searchTag, int index, int page){
         swipeRefreshLayout.setRefreshing(true);
         String categoryName = AppUtils.getCategoryName(getActivity(), index);
-        presenter.loadArticles(categoryName, page);
+        presenter.loadArticles(searchTag, categoryName, page);
     }
 
     @Override
@@ -103,7 +104,7 @@ public class ArticlesFragment extends BaseFragment implements ArticlesMvpView,
                 new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                loadData(categoryIndex, page);
+                loadData(searchQuery, categoryIndex, page);
             }
         };
         recyclerView.addOnScrollListener(scrollListener);
@@ -126,7 +127,22 @@ public class ArticlesFragment extends BaseFragment implements ArticlesMvpView,
 
     protected void updateData() {
         articlesAdapter.clear();
-        loadData(categoryIndex, 1);
+        loadData(searchQuery, categoryIndex, 1);
+    }
+
+    @Override
+    protected void startSearch() {
+       updateData();
+    }
+
+    @Override
+    protected void setupSearchOptions(SearchView searchView) {
+
+    }
+
+    @Override
+    protected void closeSearch() {
+        updateData();
     }
 
     @Override
