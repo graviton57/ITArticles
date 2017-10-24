@@ -73,6 +73,7 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
         setRetainInstance(true);
         setHasOptionsMenu(true);
         category = null;//all categories
@@ -83,7 +84,6 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content, container, false);
-        EventBus.getDefault().register(this);
         getActivityFragmentComponent().inject(this);
         setUnBinder(ButterKnife.bind(this, view));
         presenter.attachView(this);
