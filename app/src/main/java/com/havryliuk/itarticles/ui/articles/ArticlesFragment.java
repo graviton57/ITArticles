@@ -86,6 +86,7 @@ public class ArticlesFragment extends BaseFragment implements ArticlesMvpView,
     }
 
     private void loadData(int index, int page){
+        swipeRefreshLayout.setRefreshing(true);
         String categoryName = AppUtils.getCategoryName(getActivity(), index);
         presenter.loadArticles(categoryName, page);
     }

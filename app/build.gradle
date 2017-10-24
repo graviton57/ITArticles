@@ -24,10 +24,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "BASE_API_URL", "\"$BASE_API_URL\""
 
-        jackOptions {
-            enabled true
-        }
-
     }
 
     signingConfigs {
@@ -82,10 +78,6 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
