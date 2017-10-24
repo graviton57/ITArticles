@@ -9,7 +9,8 @@ import com.havryliuk.itarticles.ui.base.Presenter;
 
 public interface ArticlesMvpPresenter<V extends ArticlesMvpView> extends Presenter<V> {
 
-    void loadArticles(String searchTag, String category, int page);
+    void loadArticles(String searchTag, String category, int page,
+                      String dateFrom, String dateTo);
 
     void updateArticleFavorite(int articleId, boolean value);
 }

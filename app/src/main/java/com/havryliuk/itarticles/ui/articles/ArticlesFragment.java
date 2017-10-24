@@ -47,14 +47,14 @@ import timber.log.Timber;
 public class ArticlesFragment extends BaseFragmentSearchable implements ArticlesMvpView,
         SwipeRefreshLayout.OnRefreshListener {
 
-    public static final String EXTRA_CATEGORY_KEY = "EXTRA_CATEGORY_KEY";
-
     @Inject
     ArticlesMvpPresenter<ArticlesMvpView> presenter;
     @Inject
     ArticlesAdapter articlesAdapter;
 
     private String category;
+    private String dateFrom;
+    private String dateTo;
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -91,9 +91,10 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
         return view;
     }
 
-    private void loadData(String searchTag, String categoryName, int page){
+    private void loadData(String searchTag, String categoryName, int page ,
+                          String dateFrom, String dateTo ){
         swipeRefreshLayout.setRefreshing(true);
-        presenter.loadArticles(searchTag, categoryName, page);
+        presenter.loadArticles(searchTag, categoryName, page, dateFrom, dateTo);
     }
 
     @Override
@@ -108,7 +109,7 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
                 new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                loadData(searchQuery, category, page);
+                loadData(searchQuery, category, page, dateFrom, dateTo);
             }
         };
         recyclerView.addOnScrollListener(scrollListener);
@@ -131,7 +132,7 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
 
     protected void updateData() {
         articlesAdapter.clear();
-        loadData(searchQuery, category, 1);
+        loadData(searchQuery, category, 1, dateFrom, dateTo);
     }
 
     @Override
@@ -162,6 +163,10 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
 
     @Override
     protected void closeSearch() {
+        searchQuery = null;
+        category = null;
+        dateFrom = null;
+        dateTo = null;
         updateData();
     }
 
@@ -215,6 +220,8 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
             } else {
                 category = event.getCategory();
             }
+            dateFrom = event.getDateFrom();
+            dateTo = event.getDateTo();
             Timber.d("search onEvent()category =%s, isTag=%s", category, event.isTag());
             updateData();
         }

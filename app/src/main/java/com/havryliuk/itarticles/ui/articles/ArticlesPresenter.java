@@ -52,10 +52,11 @@ public class ArticlesPresenter<V extends ArticlesMvpView> extends BasePresenter<
     }
 
     @Override
-    public void loadArticles(String searchTag, String category, int page) {
+    public void loadArticles(String searchTag, String category, int page,
+                             String dateFrom, String dateTo ) {
         if (getMvpView().isNetworkConnected()) {
             getCompositeDisposableHelper().addDisposable(getDataManager()
-                    .getArticles(buildOptions(searchTag, category, page))
+                    .getArticles(buildOptions(searchTag, category, page, dateFrom, dateTo))
                     .flatMap(new Function<ArticleResponse, Observable<ArticleResponse>>() {
                         @Override
                         public Observable<ArticleResponse> apply(
@@ -107,7 +108,8 @@ public class ArticlesPresenter<V extends ArticlesMvpView> extends BasePresenter<
         }
     }
 
-    private HashMap<String, String> buildOptions(String searchTag, String category, int page) {
+    private HashMap<String, String> buildOptions(String searchTag, String category, int page,
+                                                 String dateFrom, String dateTo ) {
         HashMap<String, String> options = new HashMap<>();
         options.put(ArticlesApiHelper.OFFSET,
                 String.valueOf((page - 1) * ArticlesApiHelper.LIMIT_DEFAULT));
@@ -117,6 +119,12 @@ public class ArticlesPresenter<V extends ArticlesMvpView> extends BasePresenter<
         }
         if (searchTag != null) {
             options.put(ArticlesApiHelper.TAG, searchTag);
+        }
+        if (dateFrom != null && !dateFrom.isEmpty()) {
+            options.put(ArticlesApiHelper.DATE_FROM, dateFrom);
+        }
+        if (dateTo != null && !dateTo.isEmpty()) {
+            options.put(ArticlesApiHelper.DATE_TO, dateTo);
         }
         return options;
     }
