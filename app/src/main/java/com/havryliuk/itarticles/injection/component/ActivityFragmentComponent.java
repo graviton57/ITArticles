@@ -6,6 +6,7 @@ import com.havryliuk.itarticles.ui.main.MainActivity;
 import com.havryliuk.itarticles.ui.articles.ArticlesFragment;
 import com.havryliuk.itarticles.ui.favorites.FavoritesFragment;
 import com.havryliuk.itarticles.ui.login.LoginActivity;
+import com.havryliuk.itarticles.ui.search_dialog.FilterDialog;
 
 import dagger.Component;
 
@@ -19,10 +20,12 @@ public interface ActivityFragmentComponent {
 
     void inject(MainActivity mainActivity);
 
-    void inject(LoginActivity welcomeActivity);
+    void inject(LoginActivity loginActivity);
 
     void inject(ArticlesFragment articlesFragment);
 
     void inject(FavoritesFragment favoritesFragment);
+
+    void inject(FilterDialog filterDialog);
 
 }

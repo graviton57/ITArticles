@@ -9,20 +9,26 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.havryliuk.itarticles.R;
 import com.havryliuk.itarticles.data.remote.model.DouArticle;
 import com.havryliuk.itarticles.ui.base.BaseFragmentSearchable;
-import com.havryliuk.itarticles.utils.AppUtils;
+import com.havryliuk.itarticles.ui.search_dialog.FilterDialog;
 import com.havryliuk.itarticles.utils.events.RefreshArticles;
+import com.havryliuk.itarticles.utils.events.SearchParamEvent;
 import com.havryliuk.itarticles.utils.listener.EndlessRecyclerViewScrollListener;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.List;
 
@@ -30,6 +36,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 /**
  * Articles Fragment
@@ -47,7 +54,7 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
     @Inject
     ArticlesAdapter articlesAdapter;
 
-    private int categoryIndex;
+    private String category;
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -56,9 +63,8 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
     @BindView(R.id.txt_error)
     TextView txtError;
 
-    public static ArticlesFragment newInstance(int categoryIndex) {
+    public static ArticlesFragment newInstance() {
         Bundle args = new Bundle();
-        args.putInt(EXTRA_CATEGORY_KEY, categoryIndex);
         ArticlesFragment fragment = new ArticlesFragment();
         fragment.setArguments(args);
         return fragment;
@@ -69,9 +75,7 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         setHasOptionsMenu(true);
-        if (getArguments() != null) {
-            categoryIndex = getArguments().getInt(EXTRA_CATEGORY_KEY);
-        }
+        category = null;//all categories
     }
 
     @Nullable
@@ -79,6 +83,7 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content, container, false);
+        EventBus.getDefault().register(this);
         getActivityFragmentComponent().inject(this);
         setUnBinder(ButterKnife.bind(this, view));
         presenter.attachView(this);
@@ -86,9 +91,8 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
         return view;
     }
 
-    private void loadData(String searchTag, int index, int page){
+    private void loadData(String searchTag, String categoryName, int page){
         swipeRefreshLayout.setRefreshing(true);
-        String categoryName = AppUtils.getCategoryName(getActivity(), index);
         presenter.loadArticles(searchTag, categoryName, page);
     }
 
@@ -104,7 +108,7 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
                 new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                loadData(searchQuery, categoryIndex, page);
+                loadData(searchQuery, category, page);
             }
         };
         recyclerView.addOnScrollListener(scrollListener);
@@ -127,7 +131,7 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
 
     protected void updateData() {
         articlesAdapter.clear();
-        loadData(searchQuery, categoryIndex, 1);
+        loadData(searchQuery, category, 1);
     }
 
     @Override
@@ -137,7 +141,23 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
 
     @Override
     protected void setupSearchOptions(SearchView searchView) {
+        final ImageButton searchOptionsButton =
+                (ImageButton) getActivity().getLayoutInflater().inflate(R.layout.search_view_options_button, null);
+        LinearLayout searchViewSearchPlate =  searchView.findViewById(R.id.search_plate);
+        searchViewSearchPlate.addView(searchOptionsButton);
+        searchOptionsButton.setLayoutParams(
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+        searchOptionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onSearchOptionsButtonClicked();
+            }
+        });
+    }
 
+    protected void onSearchOptionsButtonClicked(){
+        FilterDialog.newInstance().show(getActivity().getSupportFragmentManager());
     }
 
     @Override
@@ -176,6 +196,7 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
 
     @Override
     public void onDestroy() {
+        EventBus.getDefault().unregister(this);
         presenter.detachView();
         super.onDestroy();
     }
@@ -185,4 +206,18 @@ public class ArticlesFragment extends BaseFragmentSearchable implements Articles
         txtError.setVisibility(visibility ? View.GONE : View.VISIBLE);
         swipeRefreshLayout.setRefreshing(false);
     }
+
+    @Subscribe(sticky=true, threadMode = ThreadMode.MAIN)
+    public void onEvent(SearchParamEvent event) {
+        if (!TextUtils.isEmpty(searchQuery) && event != null) {
+            if (event.getCategory().equals(getString(R.string.item_filter_all_values))){
+                category =  null;
+            } else {
+                category = event.getCategory();
+            }
+            Timber.d("search onEvent()category =%s, isTag=%s", category, event.isTag());
+            updateData();
+        }
+    }
+
 }

@@ -32,9 +32,6 @@ public class MainPresenterTest
         presenter.onDrawerShareClick();
         testScheduler.triggerActions();
 
-        presenter.onDrawerSettingsClick();
-        testScheduler.triggerActions();
-
         presenter.onDrawerAboutClick();
         testScheduler.triggerActions();
     }

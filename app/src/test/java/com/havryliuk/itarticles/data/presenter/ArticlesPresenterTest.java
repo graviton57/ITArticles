@@ -43,7 +43,7 @@ public class ArticlesPresenterTest extends
         ArticleResponse responseModel = TestModels.getArticleResponseModel(3);
         stubDataManagerLoadArticles(Observable.just(responseModel));
 
-        presenter.loadArticles("all", 1);
+        presenter.loadArticles(null, "all", 1);
         testScheduler.triggerActions();
 
         verify(view).showArticles(responseModel.getArticles());
@@ -60,7 +60,7 @@ public class ArticlesPresenterTest extends
 
         stubDataManagerLoadArticles(Observable.<ArticleResponse>error(exception));
 
-        presenter.loadArticles("all", 1);
+        presenter.loadArticles(null, "all", 1);
         testScheduler.triggerActions();
 
         verify(view).onError("Server not available");

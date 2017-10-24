@@ -29,5 +29,7 @@
     <dimen name="icon_home_card_margin">16dp</dimen>
     <!--Title home card-->
     <dimen name="home_card_title_height">190dp</dimen>
+    <!--Dialog dimens-->
+    <dimen name="dialog_margin_top">12dp</dimen>
 
 </resources>

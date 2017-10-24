@@ -35,8 +35,10 @@
     <string name="menu_item_share">Share</string>
     <string name="menu_item_logout">Logout</string>
     <string name="menu_item_sep_addit">Additional</string>
+    <string name="menu_item_search">Search</string>
 
     <string name="menu_item_articles">Articles</string>
+    <string name="articles_category">Search by category:</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -54,5 +56,26 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="menu_item_search">Shearch</string>
+
+    <!--Search dialog params String-->
+    <string name="dialog_title">Search by:</string>
+    <string name="dialog_check_box_text">Limit results to public domain icons only</string>
+    <string name="dialog_ok_button">OK</string>
+
+
+    <string name="item_filter_all">All</string>
+    <string name="item_filter_article">Articles</string>
+    <string name="item_filter_interview">Interview</string>
+    <string name="item_filter_columnist">Columnist</string>
+    <string name="item_filter_news">News</string>
+    <string name="item_filter_digest">Digest</string>
+    <string name="item_filter_event">Events</string>
+    <string name="item_filter_site_news">Site news</string>
+
+    <string name="radio_tag">Tag</string>
+    <string name="radio_author">Author</string>
+    <string name="pick_date">Pick date</string>
+    <string name="format_date_to">Date to:<xliff:g id="date_to">%s</xliff:g></string>
+    <string name="format_date_from">Date from:<xliff:g id="date_from">%s</xliff:g></string>
+
 </resources>

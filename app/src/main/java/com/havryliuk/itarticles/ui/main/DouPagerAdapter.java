@@ -42,7 +42,7 @@ public class DouPagerAdapter extends FragmentPagerAdapter {
 
         switch (position) {
             case 0:
-                return ArticlesFragment.newInstance(0);
+                return ArticlesFragment.newInstance();
             case 1:
                 return FavoritesFragment.newInstance();
             default:

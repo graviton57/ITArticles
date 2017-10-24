@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string-array name="articles_categories">
+        <item>@string/item_filter_all</item>
+        <item>@string/item_filter_article</item>
+        <item>@string/item_filter_interview</item>
+        <item>@string/item_filter_columnist</item>
+        <item>@string/item_filter_news</item>
+        <item>@string/item_filter_digest</item>
+        <item>@string/item_filter_event</item>
+        <item>@string/item_filter_site_news</item>
+    </string-array>
+
     <string-array name="articles_categories_values">
         <item>@string/item_filter_all_values</item>
         <item>@string/item_filter_article_values</item>

@@ -117,6 +117,7 @@ dependencies {
     androidTestAnnotationProcessor daggerCompiler
     // Date Time
     compile "joda-time:joda-time:$jodaTimeVersion"
+    compile 'com.borax12.materialdaterangepicker:library:1.9'
     // UI
     compile "uk.co.chrisjenx:calligraphy:$calligraphyVersion"
     compile "com.facebook.fresco:fresco:$frescoVersion"

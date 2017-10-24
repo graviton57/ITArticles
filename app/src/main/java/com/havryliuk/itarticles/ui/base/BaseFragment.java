@@ -103,4 +103,10 @@ public abstract class BaseFragment extends Fragment implements BaseMvpView {
 
     protected abstract void updateData();
 
+    public interface Callback {
+
+        void onFragmentAttached();
+
+        void onFragmentDetached(String tag);
+    }
 }

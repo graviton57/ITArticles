@@ -22,7 +22,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 
 public abstract class BaseActivity  extends AppCompatActivity
-        implements BaseMvpView {
+        implements BaseMvpView, BaseFragment.Callback {
 
     private ActivityFragmentComponent activityFragmentComponent;
     private Unbinder unbinder;
@@ -98,5 +98,15 @@ public abstract class BaseActivity  extends AppCompatActivity
     }
 
     protected abstract void initUI();
+
+    @Override
+    public void onFragmentAttached() {
+
+    }
+
+    @Override
+    public void onFragmentDetached(String tag) {
+
+    }
 
   }
