@@ -38,6 +38,7 @@ Login|Articles List|Search param
 - [Calligraphy](https://github.com/chrisjenx/Calligraphy)
 - [LeakCanary](https://github.com/square/leakcanary)
 - [Joda-Time](http://joda-time.sourceforge.net/)
+- [DateRangePicker](https://github.com/borax12/MaterialDateRangePicker)
 - [Fresco](https://github.com/facebook/fresco/)
 
 
