@@ -117,7 +117,7 @@ dependencies {
     androidTestAnnotationProcessor daggerCompiler
     // Date Time
     compile "joda-time:joda-time:$jodaTimeVersion"
-    compile 'com.borax12.materialdaterangepicker:library:1.9'
+    compile "com.borax12.materialdaterangepicker:library:$datePickerVersion"
     // UI
     compile "uk.co.chrisjenx:calligraphy:$calligraphyVersion"
     compile "com.facebook.fresco:fresco:$frescoVersion"
@@ -137,5 +137,5 @@ dependencies {
     testCompile "org.mockito:mockito-core:$mockitoVersion"
     testCompile "org.robolectric:robolectric:$robolectricVersion"
 
-    provided 'org.glassfish:javax.annotation:10.0-b28'
+    provided "org.glassfish:javax.annotation:$javaXAnnVersion"
 }

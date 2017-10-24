@@ -27,7 +27,10 @@ ext {
 
     eventBusVersion = '3.0.0'
     jodaTimeVersion = '2.9.1'
+    datePickerVersion = '1.9'
     frescoVersion = '1.1.0'
+
+    javaXAnnVersion = '10.0-b28'
 
     //Testing
     leakCanaryVersion = '1.5.1'
