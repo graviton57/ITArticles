@@ -98,10 +98,10 @@ public class FilterDialog extends BaseDialog
             @Override
             public void onClick(View v) {
                 SearchParamEvent event = new SearchParamEvent(checkTag.isChecked(), category);
-                if (!dateFrom.isEmpty()) {
+                if (dateFrom != null && !dateFrom.isEmpty()) {
                     event.setDateFrom(dateFrom);
                 }
-                if (!dateTo.isEmpty()) {
+                if (dateTo != null && !dateTo.isEmpty()) {
                     event.setDateTo(dateTo);
                 }
                 presenter.onSubmitClick(event);
